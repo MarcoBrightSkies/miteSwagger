@@ -1,0 +1,1958 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Mite",
+    "description": "Mite"
+  },
+  "host": "tarlt.mite.yo.lk",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/time_entries.json": {
+      "get": {
+        "summary": "GetTime Entries",
+        "description": "List all time entries of all users, sorted by date_at. Time trackers can only access their own entries.",
+        "operationId": "GettimeEntries",
+        "parameters": [
+          {
+            "name": "user_id",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "customer_id",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "project_id",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "service_id",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "note",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "at",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "from,to",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "billable",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "locked",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "tracking",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "sort",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "direction",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "group_by",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "limit",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "page",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "time_entry_group": {
+                    "type": "object",
+                    "properties": {
+                      "minutes": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "minutes"
+                      },
+                      "time_entries_params": {
+                        "type": "object",
+                        "properties": {
+                          "at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "at"
+                          },
+                          "user_id": {
+                            "type": "string",
+                            "description": "user_id"
+                          }
+                        },
+                        "description": "time_entries_params"
+                      },
+                      "revenue": {
+                        "type": "string",
+                        "description": "revenue"
+                      },
+                      "day": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "day"
+                      }
+                    },
+                    "description": "time_entry_group"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "PostTime Entries",
+        "description": "PostTime Entries",
+        "operationId": "PosttimeEntries",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "time_entry": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "id"
+                    },
+                    "minutes": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "minutes"
+                    },
+                    "date_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "date_at"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "note"
+                    },
+                    "billable": {
+                      "type": "boolean",
+                      "description": "billable"
+                    },
+                    "locked": {
+                      "type": "boolean",
+                      "description": "locked"
+                    },
+                    "revenue": {
+                      "type": "string",
+                      "description": "revenue"
+                    },
+                    "hourly_rate": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "hourly_rate"
+                    },
+                    "user_id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "user_id"
+                    },
+                    "user_name": {
+                      "type": "string",
+                      "description": "user_name"
+                    },
+                    "project_id": {
+                      "type": "string",
+                      "description": "project_id"
+                    },
+                    "service_id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "service_id"
+                    },
+                    "service_name": {
+                      "type": "string",
+                      "description": "service_name"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "created_at"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "updated_at"
+                    }
+                  },
+                  "description": "time_entry"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "time_entry": {
+                  "type": "object",
+                  "properties": {
+                    "billable": {
+                      "type": "boolean",
+                      "description": "billable"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "created_at"
+                    },
+                    "date_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "date_at"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "id"
+                    },
+                    "locked": {
+                      "type": "boolean",
+                      "description": "locked"
+                    },
+                    "minutes": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "minutes"
+                    },
+                    "project_id": {
+                      "type": "string",
+                      "description": "project_id"
+                    },
+                    "revenue": {
+                      "type": "string",
+                      "description": "revenue"
+                    },
+                    "hourly_rate": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "hourly_rate"
+                    },
+                    "service_id": {
+                      "type": "string",
+                      "description": "service_id"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "updated_at"
+                    },
+                    "user_id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "user_id"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "note"
+                    },
+                    "user_name": {
+                      "type": "string",
+                      "description": "user_name"
+                    }
+                  },
+                  "description": "time_entry"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/daily.json": {
+      "get": {
+        "summary": "Daily",
+        "description": "Get all time entries of the authenticated user for the current date",
+        "operationId": "Daily",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "time_entry": {
+                    "type": "object",
+                    "properties": {
+                      "billable": {
+                        "type": "boolean",
+                        "description": "billable"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "created_at"
+                      },
+                      "date_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "date_at"
+                      },
+                      "id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "id"
+                      },
+                      "locked": {
+                        "type": "boolean",
+                        "description": "locked"
+                      },
+                      "minutes": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "minutes"
+                      },
+                      "project_id": {
+                        "type": "string",
+                        "description": "project_id"
+                      },
+                      "revenue": {
+                        "type": "string",
+                        "description": "revenue"
+                      },
+                      "hourly_rate": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "hourly_rate"
+                      },
+                      "service_id": {
+                        "type": "string",
+                        "description": "service_id"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "updated_at"
+                      },
+                      "user_id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "user_id"
+                      },
+                      "note": {
+                        "type": "string",
+                        "description": "note"
+                      },
+                      "user_name": {
+                        "type": "string",
+                        "description": "user_name"
+                      },
+                      "project_name": {
+                        "type": "string",
+                        "description": "project_name"
+                      },
+                      "service_name": {
+                        "type": "string",
+                        "description": "service_name"
+                      }
+                    },
+                    "description": "time_entry"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers.json": {
+      "get": {
+        "summary": "GetCustomers",
+        "description": "GetCustomers",
+        "operationId": "GetCustomers",
+        "parameters": [
+          {
+            "name": "name",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "limit",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "page",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "customer": {
+                    "type": "object",
+                    "properties": {
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "created_at"
+                      },
+                      "hourly_rate": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "hourly_rate"
+                      },
+                      "id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "id"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "name"
+                      },
+                      "note": {
+                        "type": "string",
+                        "description": "note"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "updated_at"
+                      },
+                      "archived": {
+                        "type": "boolean",
+                        "description": "archived"
+                      },
+                      "active_hourly_rate": {
+                        "type": "string",
+                        "description": "active_hourly_rate"
+                      },
+                      "hourly_rates_per_service": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "hourly_rates_per_service"
+                      }
+                    },
+                    "description": "customer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "PostCustomer",
+        "description": "PostCustomer",
+        "operationId": "PostCustomer",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "customer": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "id"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "name"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "note"
+                    },
+                    "active_hourly_rate": {
+                      "type": "string",
+                      "description": "active_hourly_rate",
+                      "title": "",
+                      "x-ms-visibility": "",
+                      "enum": [
+                        "hourly_rate",
+                        "hourly_rates_per_service"
+                      ],
+                      "default": "hourly_rate"
+                    },
+                    "hourly_rate": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "hourly_rate"
+                    },
+                    "archived": {
+                      "type": "boolean",
+                      "description": "archived",
+                      "title": "",
+                      "x-ms-visibility": "",
+                      "enum": [
+                        "",
+                        "true",
+                        "false"
+                      ],
+                      "default": "false"
+                    },
+                    "hourly_rates_per_service": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "service_id": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "service_id"
+                          },
+                          "hourly_rate": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "hourly_rate",
+                            "title": "",
+                            "x-ms-visibility": ""
+                          }
+                        }
+                      },
+                      "description": "hourly_rates_per_service"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "created_at"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "updated_at"
+                    }
+                  },
+                  "description": "customer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "customer": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "id"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "name"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "note"
+                    },
+                    "hourly_rate": {
+                      "type": "string",
+                      "description": "hourly_rate"
+                    },
+                    "archived": {
+                      "type": "boolean",
+                      "description": "archived"
+                    },
+                    "active_hourly_rate": {
+                      "type": "string",
+                      "description": "active_hourly_rate"
+                    },
+                    "hourly_rates_per_service": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "hourly_rates_per_service"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "created_at"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "updated_at"
+                    }
+                  },
+                  "description": "customer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/time_entries.json/{id}.json": {},
+    "/customers/{id}.json": {
+      "delete": {
+        "summary": "DelCustomer",
+        "description": "DelCustomer",
+        "operationId": "DelCustomer",
+        "parameters": [
+          {
+            "name": "id",
+            "default": "",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "PatchCustomer",
+        "description": "PatchCustomer",
+        "operationId": "PatchCustomer",
+        "parameters": [
+          {
+            "name": "id",
+            "default": "",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "customer": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "name"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "note"
+                    },
+                    "active_hourly_rate": {
+                      "type": "string",
+                      "description": "active_hourly_rate"
+                    },
+                    "hourly_rate": {
+                      "type": "string",
+                      "description": "hourly_rate"
+                    },
+                    "hourly_rates_per_service": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "hourly_rates_per_service"
+                    },
+                    "archived": {
+                      "type": "boolean",
+                      "description": "archived"
+                    }
+                  },
+                  "description": "customer"
+                }
+              },
+              "default": {
+                "customer": {
+                  "name": "",
+                  "note": "",
+                  "active_hourly_rate": null,
+                  "hourly_rate": null,
+                  "hourly_rates_per_service": [],
+                  "archived": false
+                }
+              }
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/account.json": {
+      "get": {
+        "summary": "GetAccount",
+        "description": "Get your account",
+        "operationId": "GetAccount",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "account": {
+                  "type": "object",
+                  "properties": {
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "created_at"
+                    },
+                    "currency": {
+                      "type": "string",
+                      "description": "currency"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "id"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "name"
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "title"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "updated_at"
+                    }
+                  },
+                  "description": "account"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services/{id}.json": {
+      "delete": {
+        "summary": "DelServices",
+        "description": "Delete a service",
+        "operationId": "DelServices",
+        "parameters": [
+          {
+            "name": "id",
+            "default": "",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "PatchServices",
+        "description": "Update the service with the given attributes",
+        "operationId": "PatchServices",
+        "parameters": [
+          {
+            "name": "id",
+            "default": "",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": " application/json",
+            "description": "Content-Type"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "service": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "name"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "note"
+                    },
+                    "hourly_rate": {
+                      "type": "string",
+                      "description": "hourly_rate"
+                    },
+                    "archived": {
+                      "type": "boolean",
+                      "description": "archived"
+                    },
+                    "billable": {
+                      "type": "boolean",
+                      "description": "billable"
+                    }
+                  },
+                  "description": "service"
+                }
+              },
+              "default": {
+                "service": {
+                  "name": "",
+                  "note": "",
+                  "hourly_rate": null,
+                  "archived": false,
+                  "billable": false
+                }
+              }
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/projects.json": {
+      "get": {
+        "summary": "GetProjects",
+        "description": "GetProjects",
+        "operationId": "GetProjects",
+        "parameters": [
+          {
+            "name": "name",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "customer_id",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "limit",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "page",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "project": {
+                    "type": "object",
+                    "properties": {
+                      "budget": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "budget"
+                      },
+                      "budget_type": {
+                        "type": "string",
+                        "description": "budget_type"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "created_at"
+                      },
+                      "customer_id": {
+                        "type": "string",
+                        "description": "customer_id"
+                      },
+                      "hourly_rate": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "hourly_rate"
+                      },
+                      "id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "id"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "name"
+                      },
+                      "note": {
+                        "type": "string",
+                        "description": "note"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "updated_at"
+                      },
+                      "archived": {
+                        "type": "boolean",
+                        "description": "archived"
+                      },
+                      "active_hourly_rate": {
+                        "type": "string",
+                        "description": "active_hourly_rate"
+                      },
+                      "hourly_rates_per_service": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "hourly_rates_per_service"
+                      }
+                    },
+                    "description": "project"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "PostProjects",
+        "description": "PostProjects",
+        "operationId": "PostProjects",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "project": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "id"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "name"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "note"
+                    },
+                    "customer_id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "customer_id"
+                    },
+                    "customer_name": {
+                      "type": "string",
+                      "description": "customer_name"
+                    },
+                    "budget": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "budget"
+                    },
+                    "budget_type": {
+                      "type": "string",
+                      "description": "budget_type"
+                    },
+                    "hourly_rate": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "hourly_rate"
+                    },
+                    "archived": {
+                      "type": "boolean",
+                      "description": "archived",
+                      "title": "",
+                      "x-ms-visibility": "",
+                      "enum": [
+                        "",
+                        "true",
+                        "false"
+                      ],
+                      "default": "false"
+                    },
+                    "active_hourly_rate": {
+                      "type": "string",
+                      "description": "active_hourly_rate",
+                      "title": "",
+                      "x-ms-visibility": "",
+                      "enum": [
+                        "hourly_rate",
+                        "hourly_rates_per_service"
+                      ],
+                      "default": "hourly_rate"
+                    },
+                    "hourly_rates_per_service": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "service_id": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "service_id"
+                          },
+                          "hourly_rate": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "hourly_rate"
+                          }
+                        }
+                      },
+                      "description": "hourly_rates_per_service"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "created_at"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "updated_at"
+                    }
+                  },
+                  "description": "project"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "project": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "id"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "name"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "note"
+                    },
+                    "customer_id": {
+                      "type": "string",
+                      "description": "customer_id"
+                    },
+                    "budget": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "budget"
+                    },
+                    "budget_type": {
+                      "type": "string",
+                      "description": "budget_type"
+                    },
+                    "hourly_rate": {
+                      "type": "string",
+                      "description": "hourly_rate"
+                    },
+                    "archived": {
+                      "type": "boolean",
+                      "description": "archived"
+                    },
+                    "active_hourly_rate": {
+                      "type": "string",
+                      "description": "active_hourly_rate"
+                    },
+                    "hourly_rates_per_service": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "hourly_rates_per_service"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "created_at"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "updated_at"
+                    }
+                  },
+                  "description": "project"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tracker.json": {
+      "get": {
+        "summary": "GetTracker",
+        "description": "Returns the time tracker for the authenticated user",
+        "operationId": "GetTracker",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tracker": {
+                  "type": "object",
+                  "properties": {
+                    "tracking_time_entry": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "format": "int32",
+                          "description": "id"
+                        },
+                        "minutes": {
+                          "type": "integer",
+                          "format": "int32",
+                          "description": "minutes"
+                        },
+                        "since": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "since"
+                        }
+                      },
+                      "description": "tracking_time_entry"
+                    }
+                  },
+                  "description": "tracker"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users.json": {
+      "get": {
+        "summary": "GetUsers",
+        "description": "List all active users",
+        "operationId": "GetUsers",
+        "parameters": [
+          {
+            "name": "name",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "email",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "limit",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "page",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "created_at"
+                      },
+                      "email": {
+                        "type": "string",
+                        "description": "email"
+                      },
+                      "id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "id"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "name"
+                      },
+                      "note": {
+                        "type": "string",
+                        "description": "note"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "updated_at"
+                      },
+                      "archived": {
+                        "type": "boolean",
+                        "description": "archived"
+                      },
+                      "language": {
+                        "type": "string",
+                        "description": "language"
+                      },
+                      "role": {
+                        "type": "string",
+                        "description": "role"
+                      }
+                    },
+                    "description": "user"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/{id}.json": {
+      "delete": {
+        "summary": "DelProjects",
+        "description": "Delete a project",
+        "operationId": "DelProjects",
+        "parameters": [
+          {
+            "name": "id",
+            "default": "",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "PatchProject",
+        "description": "Update the project with the given attributes",
+        "operationId": "PatchProject",
+        "parameters": [
+          {
+            "name": "id",
+            "default": "",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": " application/json",
+            "description": "Content-Type"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "project": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "name"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "note"
+                    },
+                    "customer_id": {
+                      "type": "string",
+                      "description": "customer_id"
+                    },
+                    "budget": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "budget"
+                    },
+                    "budget_type": {
+                      "type": "string",
+                      "description": "budget_type"
+                    },
+                    "active_hourly_rate": {
+                      "type": "string",
+                      "description": "active_hourly_rate"
+                    },
+                    "hourly_rate": {
+                      "type": "string",
+                      "description": "hourly_rate"
+                    },
+                    "hourly_rates_per_service": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "hourly_rates_per_service"
+                    },
+                    "archived": {
+                      "type": "boolean",
+                      "description": "archived"
+                    }
+                  },
+                  "description": "project"
+                }
+              },
+              "default": {
+                "project": {
+                  "name": "",
+                  "note": "",
+                  "customer_id": null,
+                  "budget": 0,
+                  "budget_type": "cents",
+                  "active_hourly_rate": null,
+                  "hourly_rate": null,
+                  "hourly_rates_per_service": [],
+                  "archived": false
+                }
+              }
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/time_entries/bookmarks.json": {
+      "get": {
+        "summary": "GetBookmarks",
+        "description": "Lists all bookmarks, sorted by name.",
+        "operationId": "GetBookmarks",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "bookmark": {
+                    "type": "object",
+                    "properties": {
+                      "account_id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "account_id"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "created_at"
+                      },
+                      "id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "id"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "name"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "updated_at"
+                      },
+                      "user_id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "user_id"
+                      },
+                      "query": {
+                        "type": "string",
+                        "description": "query"
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "type"
+                      }
+                    },
+                    "description": "bookmark"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services.json": {
+      "get": {
+        "summary": "GetServices",
+        "description": "List all active services",
+        "operationId": "GetServices",
+        "parameters": [
+          {
+            "name": "name",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "limit",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "page",
+            "default": "",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "service": {
+                    "type": "object",
+                    "properties": {
+                      "billable": {
+                        "type": "boolean",
+                        "description": "billable"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "created_at"
+                      },
+                      "hourly_rate": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "hourly_rate"
+                      },
+                      "id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "id"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "name"
+                      },
+                      "note": {
+                        "type": "string",
+                        "description": "note"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "updated_at"
+                      },
+                      "archived": {
+                        "type": "boolean",
+                        "description": "archived"
+                      }
+                    },
+                    "description": "service"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "PostServices",
+        "description": "Create a new service. All attributes are optional, except the name.",
+        "operationId": "PostServices",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "service": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "id"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "name"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "note"
+                    },
+                    "hourly_rate": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "hourly_rate"
+                    },
+                    "archived": {
+                      "type": "boolean",
+                      "description": "archived"
+                    },
+                    "billable": {
+                      "type": "boolean",
+                      "description": "billable"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "created_at"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "updated_at"
+                    }
+                  },
+                  "description": "service"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "service": {
+                  "type": "object",
+                  "properties": {
+                    "billable": {
+                      "type": "boolean",
+                      "description": "billable"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "created_at"
+                    },
+                    "hourly_rate": {
+                      "type": "string",
+                      "description": "hourly_rate"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "id"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "name"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "note"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "updated_at"
+                    },
+                    "archived": {
+                      "type": "boolean",
+                      "description": "archived"
+                    }
+                  },
+                  "description": "service"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tracker/{id}.json": {
+      "delete": {
+        "summary": "DelTracker",
+        "description": "Stops the time tracker on the time entry with the given id and returns its last state.",
+        "operationId": "DelTracker",
+        "parameters": [
+          {
+            "name": "id",
+            "default": "",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "PatchTracker",
+        "description": "Start the tracker for the time entry given by the id",
+        "operationId": "PatchTracker",
+        "parameters": [
+          {
+            "name": "id",
+            "default": "",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/myself.json": {
+      "get": {
+        "summary": "GetMyself",
+        "description": "Get the current authenticated user",
+        "operationId": "GetMyself",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "created_at"
+                    },
+                    "email": {
+                      "type": "string",
+                      "description": "email"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "id"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "name"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "note"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "updated_at"
+                    },
+                    "archived": {
+                      "type": "boolean",
+                      "description": "archived"
+                    },
+                    "language": {
+                      "type": "string",
+                      "description": "language"
+                    },
+                    "role": {
+                      "type": "string",
+                      "description": "role"
+                    }
+                  },
+                  "description": "user"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/time_entries/{id}.json": {
+      "delete": {
+        "summary": "DelTime Entries",
+        "description": "DelTime Entries",
+        "operationId": "DeltimeEntries",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "PatchTime Entries",
+        "description": "Update a time entry with the given attributes. Only administrators can update entries of other users; all others only their own.",
+        "operationId": "PatchtimeEntries",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "application/json",
+            "description": "Content-Type"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "time_entry": {
+                  "type": "object",
+                  "properties": {
+                    "minutes": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "minutes"
+                    },
+                    "service_id": {
+                      "type": "string",
+                      "description": "service_id"
+                    }
+                  },
+                  "description": "time_entry"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-MiteApiKey"
+    }
+  },
+  "security": [],
+  "tags": []
+}
